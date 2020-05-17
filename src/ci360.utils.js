@@ -2,6 +2,8 @@ const get360ViewProps = (image) => ({
   folder: attr(image, 'folder') || attr(image, 'data-folder') || '/',
   filename: attr(image, 'filename') || attr(image, 'data-filename') || 'image-{index}.jpg',
   imageList: attr(image, 'image-list') || attr(image, 'data-image-list') || null,
+  zoomPercent: parseInt(attr(image, 'zoom-percent') || attr(image, 'data-zoom-percent') || 1, 10),
+  zoomMaxLevel: parseInt(attr(image, 'zoom-max-level') || attr(image, 'data-zoom-max-level') || 2, 10),
   indexZeroBase: parseInt(attr(image, 'index-zero-base') || attr(image, 'data-index-zero-base') || 0, 10),
   amount: parseInt(attr(image, 'amount') || attr(image, 'data-amount') || 36, 10),
   speed: parseInt(attr(image, 'speed') || attr(image, 'data-speed') || 80, 10),
@@ -155,12 +157,12 @@ const magnify = (container, src, glass, zoom) => {
   glass.style.border = '3px solid #000';
   glass.style.borderRadius = '50%';
   glass.style.cursor = 'wait';
-  glass.style.lineHeight = '200px';
+  glass.style.lineHeight = '150px';
   glass.style.textAlign = 'center';
   glass.style.zIndex = '1000';
 
-  glass.style.width = '250px';
-  glass.style.height = '250px';
+  glass.style.width = '200px';
+  glass.style.height = '200px';
   glass.style.top = '-75px';
   glass.style.right = '-85px';
 

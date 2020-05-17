@@ -33,11 +33,29 @@ function isNoViewers() {
   return !(window.CI360._viewers && window.CI360._viewers.length > 0);
 }
 
+function setActiveIndexByID(id, imgIndex) {
+  if (isNoViewers()) return;
+
+  let currentViewer = window.CI360._viewers.filter(viewer => viewer.id === id)[0];
+
+  return currentViewer && currentViewer.setActiveIndexByID(imgIndex);
+}
+
+function isZoom(id) {
+  if (isNoViewers()) return;
+
+  let currentViewer = window.CI360._viewers.filter(viewer => viewer.id === id)[0];
+
+  return currentViewer && currentViewer.isZoomed;
+}
+
 window.CI360 = window.CI360 || {};
 window.CI360.init = init;
 window.CI360.destroy = destroy;
 window.CI360.getActiveIndexByID = getActiveIndexByID;
-
+window.CI360.setActiveIndexByID = setActiveIndexByID;
+window.CI360.isZoom = isZoom;
+// window.CI360.notInitOnLoad = true;
 if (!window.CI360.notInitOnLoad) {
   init();
 }
